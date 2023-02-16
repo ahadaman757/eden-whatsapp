@@ -1,0 +1,26 @@
+.whapimain {
+  background: #f1faf6;
+}
+.getbtn {
+  border: none;
+  width: 205px;
+  height: 48px;
+  color: white;
+  background: #31ba45;
+  border-radius: 10px;
+}
+.hovericon {
+  width: 273px;
+  height: 188px;
+
+  background: #f1faf6;
+  border: 1px solid #bbf0c3;
+  box-shadow: 0px 0px 40px #ffffff;
+  border-radius: 10px;
+}
+.hovericon:hover {
+  background: #81de76;
+  border: 1px solid #bbf0c3;
+  border-radius: 10px;
+  color: white;
+}

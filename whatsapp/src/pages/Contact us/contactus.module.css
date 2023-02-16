@@ -1,0 +1,22 @@
+.contactmain {
+  background: #e9eff7;
+  background: linear-gradient(
+    180deg,
+    rgb(232, 238, 246) 75%,
+    rgb(253, 253, 253) 75%
+  );
+}
+.formcon {
+  background: #ffffff;
+  box-shadow: 0px 4px 50px rgba(36, 97, 145, 0.29);
+  border-radius: 10px;
+}
+.formbtn {
+  border: none;
+  color: white;
+  height: 48px;
+  width: 100%;
+  background: #0275d8;
+  border: 1px solid #0275d8;
+  border-radius: 10px;
+}

@@ -1,0 +1,94 @@
+.loginbtn {
+  background: #dff5ff;
+  border: 1px solid #6caddf;
+  border-radius: 10px;
+  width: 90px;
+  height: 48px;
+  margin: 5px 5px;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.singupbtn {
+  width: 205px !important;
+  height: 48px !important;
+  background: #0275d8;
+  border: 1px solid #0275d8;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px 5px;
+  color: white !important;
+}
+.singupbtn:hover {
+  color: brown;
+}
+.logo {
+  width: 186px;
+  height: 65px;
+
+  background: #b7b7b7;
+  margin: 10px 0px;
+}
+.navbtn {
+  display: none;
+}
+.navcon {
+  display: flex;
+}
+.navd {
+  width: 747px;
+}
+.logocon {
+  width: 186px;
+  height: 65px;
+  margin: 5px 5px;
+  background: #b7b7b7;
+}
+.manuem {
+  display: flex;
+  background: transparent;
+  align-items: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .navbtn {
+    display: block;
+  }
+  .navd {
+    display: none;
+  }
+  .singupbtn {
+    border-radius: none;
+  }
+  .manuem {
+    display: block;
+  }
+  .loginbtn {
+    background: #dff5ff;
+    border: none;
+    border-radius: 10px;
+    width: 90px;
+    height: 48px;
+    margin: 5px 5px;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .singupbtn {
+    width: 205px !important;
+    height: 48px !important;
+    background: #0275d8;
+    border: 1px solid #0275d8;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px 5px;
+    color: white !important;
+  }
+}

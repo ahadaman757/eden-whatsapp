@@ -1,0 +1,47 @@
+.main {
+  display: flex;
+  flex-direction: row;
+  background: #f9f9f9;
+  min-height: 100vh;
+}
+.manuem {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  align-items: center;
+  margin-right: 10px !important;
+}
+.maasin {
+  border: none;
+}
+.ssd {
+  border: none;
+  background-color: white;
+  width: 218px;
+  height: 52px;
+  border-radius: 10px;
+}
+.ssd:hover {
+  background-color: #0275d8;
+  color: white;
+}
+.navb {
+  width: 100%;
+}
+.nav {
+  background-color: white;
+}
+.bage {
+  background: #ff0000;
+  border-radius: 10px;
+
+  color: white;
+  padding: 10px;
+}
+.setnot {
+  padding-right: 10px;
+  border-right: 1px solid #ececee;
+}
+.settnot {
+  padding-left: 10px;
+}

@@ -1,0 +1,50 @@
+.dashmin {
+  background: #ffffff;
+  border: 1px solid #ececec;
+  border-radius: 10px;
+}
+.bacolor {
+  background: #b5f1cc;
+  opacity: 0.65;
+  border-radius: 16px;
+  width: 63px;
+  height: 63px;
+}
+.bulecolor {
+  background: #a8d7ff;
+  opacity: 0.65;
+  border-radius: 16px;
+  width: 63px;
+  height: 63px;
+}
+.hr {
+  border-right: 1px solid #ececee;
+}
+.orcolor {
+  background: #fff2e9;
+  opacity: 0.65;
+  border-radius: 16px;
+  width: 63px;
+  height: 63px;
+}
+.chartcon {
+  background: #ffffff;
+  border: 1px solid #ececec;
+  border-radius: 10px;
+}
+.chartheas {
+  border-bottom: 1px solid #ececec;
+}
+.chartbtn {
+  width: 112px;
+  height: 32px;
+
+  background: #efefef;
+  border: 1px solid #b6b6b6;
+  border-radius: 5px;
+}
+.Tablecobtainer {
+  background: #ffffff;
+  border: 1px solid #ececec;
+  border-radius: 10px;
+}
