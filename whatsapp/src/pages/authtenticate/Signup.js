@@ -10,12 +10,26 @@ import seticon from "../../assets/ph_gear.png";
 import braketicon from "../../assets/material-symbols_code.png";
 import messageicon from "../../assets/mdi_message-processing-outline.png";
 import { useState } from "react";
+import React from "react";
+import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input";
+
 import Axios from "axios";
 const Signup = () => {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [value, setValue] = useState();
+  const getFlag = (short = "string") => {
+    const data = require(`world_countries_lists/data/flags/24x24/${short.toLowerCase()}.png`);
+    // for dumi
+    if (typeof data === "string") {
+      return data;
+    }
+    // for CRA
+    return data.default;
+  };
   const register = () => {
     Axios.post("http://localhost:3002/register", {
       name: "ksd",
@@ -117,7 +131,12 @@ const Signup = () => {
                 <p className="fon18 m-0 fontw5">
                   WhatsApp Number (with country code)*
                 </p>
-                <Input className={`mt-1 px-1 ${Styles.Inputfrom}`} />
+                <PhoneInput
+                  className={`mt-1 px-1  ${Styles.Inputfrom}`}
+                  placeholder="Enter phone number"
+                  value={value}
+                  onChange={setValue}
+                />
               </Form.Item>
               <Form.Item>
                 <p className="fon18 m-0 fontw5">Password*</p>
