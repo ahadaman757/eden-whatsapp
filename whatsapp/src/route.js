@@ -20,7 +20,7 @@ import {
 import Profile from "./pages/dashboardpages/profile/profile";
 import Dashboardmain from "./pages/dashboardpages/dashboardmain/dashbordmain";
 import Templete from "./pages/dashboardpages/templete/templete";
-
+import Recentactivity from "./pages/dashboardpages/Recent Activity/recentactivity";
 const TRoutes = () => {
   return (
     <BrowserRouter>
@@ -38,7 +38,7 @@ const TRoutes = () => {
         <Route path="/dashboard" element={<Dashboard />}>
           <Route path="" element={<Dashboardmain />} />
           <Route path="templete" element={<Templete />} />
-          <Route path="profile" element={<Profile />} />
+          <Route path="recentactivity" element={<Recentactivity />} />
         </Route>
       </Routes>
     </BrowserRouter>

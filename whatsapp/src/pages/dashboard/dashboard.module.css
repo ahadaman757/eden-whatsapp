@@ -18,12 +18,12 @@
   border: none;
   background-color: white;
   width: 218px;
-  height: 52px;
+
   border-radius: 10px;
 }
 .ssd:hover {
-  background-color: #0275d8;
-  color: white;
+  background-color: #0275d8 !important;
+  color: white !important;
 }
 .navb {
   width: 100%;

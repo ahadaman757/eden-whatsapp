@@ -70,6 +70,18 @@ code {
 .PhoneInputInput {
   border: none;
 }
+.ant-menu-submenu-title:hover {
+  background-color: #0275d8 !important;
+  color: white !important;
+
+  border-radius: 10px;
+}
+.PhoneInputInput:focus-visible {
+  border: none !important;
+}
+.PhoneInputInput:focus {
+  border: none !important;
+}
 .fon17 {
   font-family: "Montserrat";
   font-style: normal;

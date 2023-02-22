@@ -34,6 +34,8 @@ import Dashboardmain from "../dashboardpages/dashboardmain/dashbordmain";
 import Profile from "../dashboardpages/profile/profile.js";
 import { Breadcrumb, Layout, theme } from "antd";
 
+const { SubMenu } = Menu;
+
 const { Header, Content, Footer, Sider } = Layout;
 const Dashboard = () => {
   const [accordian, setaccordian] = useState(false);
@@ -43,14 +45,6 @@ const Dashboard = () => {
   //   const history = useHistory();
   const navigate = useNavigate();
   const acoStyle = {};
-
-  <Routes>
-    <Route path="/" element={<Dashboardmain />}>
-      {/* <Route path="messages" element={<DashboardMessages />} />
-            <Route path="tasks" element={<DashboardTasks />} /> */}
-    </Route>
-    {/* <Route path="about" element={<AboutPage />} /> */}
-  </Routes>;
 
   function handel(id) {
     if ((id = "profile")) {
@@ -83,20 +77,28 @@ const Dashboard = () => {
           mode="inline"
           defaultSelectedKeys={["1"]}
         >
-          <Menu.Item
-            className={`${Styles.ssd}`}
-            key="1"
+          <SubMenu
+            key="sub1"
             icon={
               <Icon
                 icon="ant-design:layout-outlined"
                 style={{ fontSize: "23px" }}
               />
             }
+            title="Navigation One"
           >
-            <Link to="/dashboard">Dashboard</Link>
-          </Menu.Item>
+            <Menu.Item key="3">
+              {" "}
+              <Link to="/dashboard">Overview</Link>{" "}
+            </Menu.Item>
+            <Menu.Item key="4">
+              {" "}
+              <Link to="recentactivity">Recent Activity</Link>
+            </Menu.Item>
+          </SubMenu>
+
           <Menu.Item
-            className={`${Styles.ssd}`}
+            className={` ${Styles.ssd}`}
             key="2"
             icon={
               <Icon
@@ -105,7 +107,7 @@ const Dashboard = () => {
               />
             }
           >
-            <Link to="/dashboard">Template</Link>
+            <Link to="/dashboard/templete">Template</Link>
           </Menu.Item>
           <Menu.Item
             className={`${Styles.ssd}`}
