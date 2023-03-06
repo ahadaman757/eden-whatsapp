@@ -21,6 +21,8 @@ import Profile from "./pages/dashboardpages/profile/profile";
 import Dashboardmain from "./pages/dashboardpages/dashboardmain/dashbordmain";
 import Templete from "./pages/dashboardpages/templete/templete";
 import Recentactivity from "./pages/dashboardpages/Recent Activity/recentactivity";
+import Setting from "./pages/dashboardpages/setting/setting";
+import Contacts from "./pages/dashboardpages/contacts/contacts";
 const TRoutes = () => {
   return (
     <BrowserRouter>
@@ -31,7 +33,7 @@ const TRoutes = () => {
         <Route path="/login" element={<Login />} />{" "}
         <Route path="/signup" element={<Signup />} />{" "}
         <Route path="/forgetpass" element={<Forgetpass />} />
-        <Route path="/newpass" element={<Newpass />} />
+        <Route path="/newpass/:code" element={<Newpass />} />
         <Route path="/confirompass" element={<Confirompass />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/whatsappapi" element={<WhatsAppApi />} />
@@ -39,6 +41,9 @@ const TRoutes = () => {
           <Route path="" element={<Dashboardmain />} />
           <Route path="templete" element={<Templete />} />
           <Route path="recentactivity" element={<Recentactivity />} />
+          <Route path="setting" element={<Setting />} />
+          <Route path="contacts" element={<Contacts />} />
+          <Route path="profile" element={<Profile />} />
         </Route>
       </Routes>
     </BrowserRouter>

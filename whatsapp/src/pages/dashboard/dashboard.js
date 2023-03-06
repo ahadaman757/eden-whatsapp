@@ -1,5 +1,5 @@
 import Styles from "./dashboard.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import React from "react";
 import { Icon } from "@iconify/react";
 import {
@@ -32,7 +32,8 @@ import {
 
 import Dashboardmain from "../dashboardpages/dashboardmain/dashbordmain";
 import Profile from "../dashboardpages/profile/profile.js";
-import { Breadcrumb, Layout, theme } from "antd";
+import { Breadcrumb, Layout, Skeleton, theme } from "antd";
+import axios from "axios";
 
 const { SubMenu } = Menu;
 
@@ -40,11 +41,29 @@ const { Header, Content, Footer, Sider } = Layout;
 const Dashboard = () => {
   const [accordian, setaccordian] = useState(false);
   const [accordian1, setaccordian1] = useState(false);
+  const [userData, setUserdata] = useState();
+  const [loading, setLoading] = useState(true);
 
   const [collapsed, setCollapsed] = useState(false);
   //   const history = useHistory();
   const navigate = useNavigate();
   const acoStyle = {};
+  useEffect(() => {
+    setTimeout(() => {
+      axios
+        .get("http://localhost:3001/protected-route", {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        })
+        .then((res) => {
+          setLoading(false);
+
+          setUserdata(res.data.details[0]);
+        });
+    }, 200);
+    // GET USER DATA
+  }, []);
 
   function handel(id) {
     if ((id = "profile")) {
@@ -114,7 +133,7 @@ const Dashboard = () => {
             key="3"
             icon={<Icon icon="uil:users-alt" style={{ fontSize: "23px" }} />}
           >
-            <Link to="/dashboard">Contacts</Link>
+            <Link to="contacts">Contacts</Link>
           </Menu.Item>
           <Menu.Item
             className={`${Styles.ssd}`}
@@ -130,7 +149,7 @@ const Dashboard = () => {
             key="5"
             icon={<Icon icon="ep:setting" style={{ fontSize: "23px" }} />}
           >
-            <Link to="/dashboard">Setting</Link>
+            <Link to="setting">Setting</Link>
           </Menu.Item>
         </Menu>
       </Sider>
@@ -157,13 +176,33 @@ const Dashboard = () => {
               </div>
             </div>
             <div>
-              <p className="fon16 fontw6 m-0 me-2">Connected</p>
-              <p className="fon16 fontw6 m-0 gr31 me-2">+1 223 223 4444</p>
+              <Skeleton
+                style={{ width: "200px", height: "30px" }}
+                loading={loading}
+                paragraph={{ rows: 1 }}
+              >
+                <p className="fon16 fontw6 m-0 me-2">Connected</p>
+                <p className="fon16 fontw6 m-0 gr31 me-2">
+                  {" "}
+                  {loading ? "" : userData.whatsapp_number}
+                </p>
+              </Skeleton>
             </div>
             <div>
-              {" "}
-              <p className="fon16 fontw6 m-0 me-2">Hello, Scott Butler</p>
-              <p className="fon16 fontw6 m-0 c61 me-2">useremail@gmail.com</p>
+              <Skeleton
+                style={{ width: "200px", height: "30px" }}
+                loading={loading}
+                paragraph={{ rows: 1 }}
+              >
+                <p className="fon16 fontw6 m-0 me-2">
+                  Hello, {loading ? "" : userData.first_name}{" "}
+                  {loading ? "" : userData.last_name}
+                </p>
+              </Skeleton>
+
+              <p className="fon16 fontw6 m-0 c61 me-2">
+                {loading ? "" : userData.email}
+              </p>
             </div>{" "}
             <div>
               <img src={profimg} />

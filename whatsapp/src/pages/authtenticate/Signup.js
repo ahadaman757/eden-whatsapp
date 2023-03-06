@@ -1,5 +1,5 @@
 import Styles from "./auth.module.css";
-import { Row, Col, Form, Input, Checkbox } from "antd";
+import { Row, Col, Form, Input, Checkbox, Button } from "antd";
 import {
   MailOutlined,
   LockOutlined,
@@ -13,13 +13,11 @@ import { useState } from "react";
 import React from "react";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
+import { useNavigate } from "react-router-dom";
 
 import Axios from "axios";
 const Signup = () => {
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [passwordVisible, setPasswordVisible] = useState(false);
+  const navigate = useNavigate();
   const [value, setValue] = useState();
   const getFlag = (short = "string") => {
     const data = require(`world_countries_lists/data/flags/24x24/${short.toLowerCase()}.png`);
@@ -30,19 +28,29 @@ const Signup = () => {
     // for CRA
     return data.default;
   };
-  const register = () => {
-    Axios.post("http://localhost:3002/register", {
-      name: "ksd",
-      email: "sds",
-      password: "sd",
+  const onFinish = (values) => {
+    console.log("Success:", value, values);
+
+    Axios.post("http://localhost:3001/register", {
+      first_name: values.first_name,
+      last_name: values.last_name,
+      email: values.email,
+      whatsapp_number: values.whatsapp_number,
+      password: values.password,
     })
       .then((response) => {
         console.log(response.data);
+        localStorage.setItem("accessToken", response.data.token);
+        navigate("/dashboard");
       })
       .catch((error) => {
         console.log(error);
       });
   };
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
+
   return (
     <div>
       <Row>
@@ -101,88 +109,141 @@ const Signup = () => {
             <p className="fon16 fontw4">We are glad to see you again!</p>
             <h1 className="fon30 fontw7">Create you new account.</h1>
             <div className={`${Styles.hr}`}></div>
-            <Form className="mt-2">
+            <Form
+              className="mt-2"
+              initialValues={{
+                remember: true,
+              }}
+              onFinish={onFinish}
+              onFinishFailed={onFinishFailed}
+            >
               <div className="df jcb">
                 {" "}
-                <Form.Item>
+                <div>
                   <p className="fon18 m-0 fontw5">First Name*</p>
-                  <Input
-                    onChange={(e) => {
-                      setName(e.target.value);
-                    }}
-                    className={`mt-1 px-1 ${Styles.Inputfromf}`}
-                  />
-                </Form.Item>
-                <Form.Item>
+                  <Form.Item
+                    name="first_name"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input your username!",
+                      },
+                    ]}
+                  >
+                    <Input className={`mt-1 px-1 ${Styles.Inputfromf}`} />
+                  </Form.Item>
+                </div>
+                <div>
                   <p className="fon18 m-0 fontw5">Last Name*</p>
-                  <Input className={`mt-1 px-1 ${Styles.Inputfromf}`} />
+                  <Form.Item
+                    name="last_name"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input your username!",
+                      },
+                    ]}
+                  >
+                    <Input className={`mt-1 px-1 ${Styles.Inputfromf}`} />
+                  </Form.Item>
+                </div>
+              </div>
+              <div>
+                <p className="fon18 m-0 fontw5">Email Address*</p>
+                <Form.Item
+                  name="email"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please input your username!",
+                    },
+                  ]}
+                >
+                  <Input className={`mt-1 px-1 ${Styles.Inputfrom}`} />
                 </Form.Item>
               </div>
-              <Form.Item>
-                <p className="fon18 m-0 fontw5">Email Address*</p>
-                <Input
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}
-                  className={`mt-1 px-1 ${Styles.Inputfrom}`}
-                />
-              </Form.Item>
-              <Form.Item>
+              <div>
                 <p className="fon18 m-0 fontw5">
                   WhatsApp Number (with country code)*
                 </p>
-                <PhoneInput
-                  className={`mt-1 px-1  ${Styles.Inputfrom}`}
-                  placeholder="Enter phone number"
-                  value={value}
-                  onChange={setValue}
-                />
-              </Form.Item>
-              <Form.Item>
+                <Form.Item
+                  name="whatsapp_number"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please input your username!",
+                    },
+                  ]}
+                >
+                  <PhoneInput
+                    className={`mt-1 px-1  ${Styles.Inputfrom}`}
+                    placeholder="Enter phone number"
+                    value={value}
+                    onChange={setValue}
+                  />
+                </Form.Item>
+              </div>
+              <div>
                 <p className="fon18 m-0 fontw5">Password*</p>
-                <Input.Password
-                  onChange={(e) => {
-                    password(e.target.value);
-                  }}
-                  className={`mt-1 px-1  ${Styles.Inputfrom}`}
-                  suffix={(visible) =>
-                    visible ? (
-                      <EyeTwoTone
-                        style={{ color: "#C7C7C7", fontSize: "24px" }}
-                      />
-                    ) : (
-                      <EyeInvisibleOutlined
-                        style={{ color: "#C7C7C7", fontSize: "24px" }}
-                      />
-                    )
-                  }
-                />
-              </Form.Item>
-              <Form.Item>
+                <Form.Item
+                  name="password"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please input your username!",
+                    },
+                  ]}
+                >
+                  <Input.Password
+                    className={`mt-1 px-1  ${Styles.Inputfrom}`}
+                    suffix={(visible) =>
+                      visible ? (
+                        <EyeTwoTone
+                          style={{ color: "#C7C7C7", fontSize: "24px" }}
+                        />
+                      ) : (
+                        <EyeInvisibleOutlined
+                          style={{ color: "#C7C7C7", fontSize: "24px" }}
+                        />
+                      )
+                    }
+                  />
+                </Form.Item>
+              </div>
+              <div>
                 <p className="fon18 m-0 fontw5">Confirm Password*</p>
-                <Input.Password
-                  className={`mt-1 px-1  ${Styles.Inputfrom}`}
-                  suffix={(visible) =>
-                    visible ? (
-                      <EyeTwoTone
-                        style={{ color: "#C7C7C7", fontSize: "24px" }}
-                      />
-                    ) : (
-                      <EyeInvisibleOutlined
-                        style={{ color: "#C7C7C7", fontSize: "24px" }}
-                      />
-                    )
-                  }
-                />
-              </Form.Item>
+                <Form.Item
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please input your username!",
+                    },
+                  ]}
+                >
+                  <Input.Password
+                    className={`mt-1 px-1  ${Styles.Inputfrom}`}
+                    suffix={(visible) =>
+                      visible ? (
+                        <EyeTwoTone
+                          style={{ color: "#C7C7C7", fontSize: "24px" }}
+                        />
+                      ) : (
+                        <EyeInvisibleOutlined
+                          style={{ color: "#C7C7C7", fontSize: "24px" }}
+                        />
+                      )
+                    }
+                  />
+                </Form.Item>
+              </div>
 
               <Form.Item>
-                <button
-                  onClick={register()}
+                <Button
+                  htmlType="submit"
                   className={`fon18 fontw6 mt-1 ${Styles.logbtn}`}
                 >
                   Login
-                </button>
+                </Button>
               </Form.Item>
 
               <div className="df jcc aic">

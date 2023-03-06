@@ -3,14 +3,7 @@ const mysql = require("mysql");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
-
-// Connect to the MySQL database
-const db = mysql.createConnection({
-  host: process.env.DATABASE_HOST,
-  user: process.env.DATABASE_USER,
-  password: process.env.DATABASE_PASSWORD,
-  database: process.env.DATABASE,
-});
+const db = require("./db");
 
 // Route to handle POST requests to the /register endpoint
 router.post("/", (req, res) => {
@@ -52,14 +45,16 @@ router.post("/", (req, res) => {
           }
 
           // Generate the JWT token
-          const privateKey = "myPrivateKey";
+          const privateKey = process.env.JWT_PRIVATE_KEY;
           const token = jwt.sign(
             { email: email },
             privateKey,
-
+            { expiresIn: "1h" }, // Token expiration time
             (err, token) => {
               if (err) {
-                res.status(500).json({ message: "Error generating JWT token" });
+                res.status(500).json({
+                  message: "Error generating JWT token",
+                });
                 return;
               }
 

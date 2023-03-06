@@ -1,0 +1,22 @@
+.profhed {
+  background: #ffffff;
+  border: 1px solid #ececec;
+  border-radius: 10px;
+}
+.hedbo {
+  border-bottom: 1px solid #ececec;
+}
+.inputf {
+  background: #ffffff;
+  border: 1px solid #e1e1e1;
+  border-radius: 10px;
+  height: 45px;
+}
+.subtn {
+  border: none;
+  color: white;
+  background: #31ba45;
+  border-radius: 5px;
+  width: 177px;
+  height: 41px;
+}

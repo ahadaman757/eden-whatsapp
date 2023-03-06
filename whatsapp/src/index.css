@@ -373,6 +373,9 @@ code {
 .jce {
   justify-content: space-evenly;
 }
+.jcee {
+  justify-content: end;
+}
 .aic {
   align-items: center;
 }
