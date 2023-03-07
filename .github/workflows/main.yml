@@ -20,7 +20,7 @@ jobs:
           npm i --force
           pm2 stop 0
           pm2 stop 1
-          cd back_end
+          cd back-end
           npm i --force
           pm2 start 0
           pm2 start 1
