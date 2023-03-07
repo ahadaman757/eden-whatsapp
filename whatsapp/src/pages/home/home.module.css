@@ -7,6 +7,12 @@
 }
 .heading {
 }
+.Inputfrom {
+  background: #ffffff;
+  border: 1px solid #c7c7c7;
+  border-radius: 10px;
+  height: 35px;
+}
 .bnthero {
   border: none;
   color: white;

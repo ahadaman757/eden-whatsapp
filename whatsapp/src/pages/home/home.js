@@ -17,16 +17,30 @@ import settingicon from "../../assets/ph_gear@2x.png";
 import whatsappwicon from "../../assets/ic_twotone-whatsapp.png";
 import watch from "../../assets/amazfit-gts-3-pakistan-priceoye-xzefz-500x500 1.png";
 import shose from "../../assets/amazfit-gts-3-pakistan-priceoye-xzefz-500x500 2.png";
+
 import Slider from "react-slick";
 import { useState } from "react";
 import Reviewcard from "../../component/reviwecard/reviewcard";
-import { Col, Divider, Row } from "antd";
+import { Col, Divider, Row, Button, Modal, Form, Input } from "antd";
 import Styles from "./home.module.css";
 import Footer from "../../component/Footer/Footer";
+import PhoneInput from "react-phone-number-input";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const [value, setValue] = useState();
+  const getFlag = (short = "string") => {
+    const data = require(`world_countries_lists/data/flags/24x24/${short.toLowerCase()}.png`);
+    // for dumi
+    if (typeof data === "string") {
+      return data;
+    }
+    // for CRA
+    return data.default;
+  };
   const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
+  const [open1, setOpen1] = useState(false);
   const [settings, setSettings] = useState({
     dots: true,
 
@@ -66,9 +80,14 @@ const Home = () => {
             API for
             <br /> your Brand.
           </h1>
-          <p className="mt-3 fon18 fontw4 tc">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-            blandit sem a <br /> eros vulputate, et rhoncus nulla{" "}
+          <p className="mt-3 fon18 fontw4 tc line-h27">
+            Enrich your customer experience and conversion with our TOP-NOTCH
+            <br />
+            WhatsApp & SMS API. The only choice so you and your customers can
+            <br />
+            track events and happenings with world’s popular communication
+            <br />
+            channel.
           </p>
           <div className="mt-3 df jcc aic">
             <button className={`me-1 fon16 fontw6 ${Styles.bnthero}`}>
@@ -90,8 +109,8 @@ const Home = () => {
               <div>
                 <p className="fon22 fontw6">Easy to setup</p>
                 <p className="fon18 c61 fontw4">
-                  Lorem ipsum dolor sit amet,
-                  <br /> consectetur{" "}
+                  Get started with the WhatsApp
+                  <br /> and SMS API within seconds.
                 </p>
               </div>
             </div>
@@ -100,8 +119,9 @@ const Home = () => {
               <div>
                 <p className="fon22 fontw6">Developers Friendly</p>
                 <p className="fon18 c61 fontw4">
-                  Lorem ipsum dolor sit amet,
-                  <br /> consectetur{" "}
+                  Change it the way to like!
+                  <br /> With our super developer friendly
+                  <br /> code and documentation.
                 </p>
               </div>
             </div>
@@ -110,8 +130,8 @@ const Home = () => {
               <div>
                 <p className="fon22 fontw6">Messages</p>
                 <p className="fon18 c61 fontw4">
-                  Lorem ipsum dolor sit amet,
-                  <br /> consectetur{" "}
+                  Send messages to WhatsApp
+                  <br /> or SMS without any hassle!
                 </p>
               </div>
             </div>
@@ -134,10 +154,14 @@ const Home = () => {
                       </span>
                       WhatsApp Integration{" "}
                     </h1>
-                    <p className="fon18 c61 fontw4 ">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud{" "}
+                    <p className="fon18 c61 fontw4 line-h27 ">
+                      WhatsApp is one of the most popular communication medium,
+                      and businesses are migrating towards WhatsApp for better
+                      communication and conversion. So, why shouldn’t you? With
+                      our extensive mechanism built with latest technologies and
+                      compliance approved we provide you access to the world of
+                      better and faster communication. Click below to learn
+                      more!
                     </p>
                     <button
                       onClick={() => {
@@ -192,10 +216,12 @@ const Home = () => {
                   </span>{" "}
                   SMS API
                 </h1>
-                <p className="fon18 c61 fontw4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud{" "}
+                <p className="fon18 c61 fontw4 line-h27">
+                  SMS conversations have an open rate of above 98%. As a result,
+                  SMS is a useful tool for sending time-sensitive messages like
+                  alarms, order confirmations, and appointment reminders. It's
+                  easier than ever with us! Click the following button to learn
+                  more.
                 </p>
                 <button className={`fon18 fontw5 ${Styles.msebtn}`}>
                   Get Started
@@ -285,7 +311,45 @@ const Home = () => {
                       </div>
                       <p className="fon17 fontw5">Amazfit GTS 3</p>
                       <p className="fon17 fontw7">$100</p>
-                      <a className="fon17 fontw5">Buy Now</a>
+
+                      <a
+                        className="fon17 fontw5"
+                        type="primary"
+                        onClick={() => setOpen(true)}
+                      >
+                        Buy Now
+                      </a>
+                      <Modal
+                        title=""
+                        centered
+                        open={open}
+                        onOk={() => setOpen(false)}
+                        onCancel={() => setOpen(false)}
+                        width={300}
+                      >
+                        <Form className="pt-2">
+                          <div className={`df jcc ${Styles.wtach}`}>
+                            <img src={watch} />
+                          </div>
+                          <label>Name</label>
+                          <Form.Item>
+                            <Input />
+                          </Form.Item>
+                          <label>Whatsapp Number</label>
+                          <Form.Item>
+                            <PhoneInput
+                              className={`mt-1 px-1  ${Styles.Inputfrom}`}
+                              placeholder="Enter phone number"
+                              value={value}
+                              onChange={setValue}
+                            />
+                          </Form.Item>
+                        </Form>
+                        <div className="df jcb">
+                          <p className="fon18 fontw6">Total</p>{" "}
+                          <p className="fon17 fontw7">$100</p>
+                        </div>
+                      </Modal>
                     </div>
                   </Col>
                   <Col sm={12}>
@@ -295,7 +359,43 @@ const Home = () => {
                       </div>
                       <p className="fon17 fontw5">UPCOURT 5</p>
                       <p className="fon17 fontw7">$100</p>
-                      <a className="fon17 fontw5">Buy Now</a>
+                      <a
+                        onClick={() => setOpen1(true)}
+                        className="fon17 fontw5"
+                      >
+                        Buy Now
+                      </a>
+                      <Modal
+                        title=""
+                        centered
+                        open={open1}
+                        onOk={() => setOpen1(false)}
+                        onCancel={() => setOpen1(false)}
+                        width={300}
+                      >
+                        <Form className="pt-2">
+                          <div className={`df jcc ${Styles.wtach}`}>
+                            <img src={shose} />
+                          </div>
+                          <label>Name</label>
+                          <Form.Item>
+                            <Input />
+                          </Form.Item>
+                          <label>Whatsapp Number</label>
+                          <Form.Item>
+                            <PhoneInput
+                              className={`mt-1 px-1  ${Styles.Inputfrom}`}
+                              placeholder="Enter phone number"
+                              value={value}
+                              onChange={setValue}
+                            />
+                          </Form.Item>
+                        </Form>
+                        <div className="df jcb">
+                          <p className="fon18 fontw6">Total</p>{" "}
+                          <p className="fon17 fontw7">$100</p>
+                        </div>
+                      </Modal>
                     </div>
                   </Col>
                 </Row>

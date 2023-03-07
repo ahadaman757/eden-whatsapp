@@ -9,7 +9,27 @@ const db = require("./db");
 const jwt = require("jsonwebtoken");
 const bodyParser = require("body-parser");
 const crypto = require("crypto");
+const multer = require("multer");
 const nodemailer = require("nodemailer");
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "uploads/"); // specify the destination folder for uploaded files
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + "-" + file.originalname); // specify the filename for uploaded files
+  },
+});
+const upload = multer({
+  storage: storage,
+  fileFilter: function (req, file, cb) {
+    // specify the file type filter for uploaded files
+    if (file.mimetype.startsWith("image/")) {
+      cb(null, true);
+    } else {
+      cb(new Error("Invalid file type."));
+    }
+  },
+});
 
 // Load environment variables from the .env file
 dotenv.config({ path: "./.env" });
@@ -123,13 +143,40 @@ app.post("/reset-password", (req, res) => {
 app.use("/register", registerRouter);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/login", loginRouter);
+app.put(
+  "/user/:id/image",
+  validateToken,
+  upload.single("profile_img"),
+  (req, res) => {
+    // get the filename of the uploaded image file from req.file
+    const profile_img = req.file ? req.file.filename : null;
+
+    // update the user's profile image in the database
+    db.query(
+      "UPDATE users SET profile_img = ? WHERE id = ?",
+      [profile_img, req.params.id],
+      (err, result) => {
+        if (err) {
+          res.status(500).json({ message: err });
+          return console.log(profile_img, req.params.id);
+        } else if (result.affectedRows === 0) {
+          res.status(404).json({ message: "User not found." });
+          return console.log("Sad");
+        } else {
+          res.json({ message: "Profile image updated successfully." });
+          console.log(profile_img, req.params.id);
+        }
+      }
+    );
+  }
+);
 app.get("/user", validateToken, (req, res) => {
   // Do something with the authenticated user data
   const user = req.decodedToken;
   // res.json({ message: `Hello ${user.email}!` });
 
   db.query(
-    "SELECT  id,first_name,	last_name, whatsapp_number, email, 	profille_img FROM users WHERE email = ?",
+    "SELECT  id,first_name,	last_name, whatsapp_number, email, 	profile_img FROM users WHERE email = ?",
     [user.email],
     (err, result) => {
       if (err) {
@@ -141,34 +188,50 @@ app.get("/user", validateToken, (req, res) => {
     }
   );
 });
-app.put("/user/:id", validateToken, (req, res) => {
-  const userId = req.params.id;
-  const { first_name, last_name, whatsapp_number, profile_img } = req.body;
-  const user = req.decodedToken;
+app.put(
+  "/user/:id",
+  validateToken,
 
-  db.query(
-    "UPDATE users SET first_name = ?, last_name = ?, whatsapp_number = ?, profille_img = ? WHERE email = ?",
-    [first_name, last_name, whatsapp_number, profile_img, user.email],
-    (err, result) => {
-      if (err) {
-        res.status(500).json({ message: err });
-        return;
-      } else if (result.affectedRows === 0) {
-        res.status(404).json({ message: "User not found." });
-        return console.log("Sad");
-      } else {
-        res.json({ message: "User updated successfully." });
-        console.log(
-          first_name,
-          last_name,
-          whatsapp_number,
-          profile_img,
-          user.email
-        );
+  (req, res) => {
+    // get user ID, updated user information, and decoded token from request
+    const userId = req.params.id;
+    const { first_name, last_name, whatsapp_number } = req.body;
+    const user = req.decodedToken;
+
+    // get the filename of the uploaded image file from req.file
+    const profile_img = req.file ? req.file.filename : null;
+
+    // update user information in the database
+    db.query(
+      "UPDATE users SET first_name = ?, last_name = ?, whatsapp_number = ? WHERE email = ?",
+      [first_name, last_name, whatsapp_number, user.email],
+      (err, result) => {
+        if (err) {
+          res.status(500).json({ message: err });
+          return console.log(
+            first_name,
+            last_name,
+            whatsapp_number,
+
+            user.email
+          );
+        } else if (result.affectedRows === 0) {
+          res.status(404).json({ message: "User not found." });
+          return console.log("Sad");
+        } else {
+          res.json({ message: "User updated successfully." });
+          console.log(
+            first_name,
+            last_name,
+            whatsapp_number,
+
+            user.email
+          );
+        }
       }
-    }
-  );
-});
+    );
+  }
+);
 
 app.get("/protected-route", validateToken, (req, res) => {
   // Do something with the authenticated user data

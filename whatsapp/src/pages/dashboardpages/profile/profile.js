@@ -53,7 +53,49 @@ const Profile = () => {
     );
   };
 
-  const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
+  function sendUploadRequest(options) {
+    const { file, onSuccess, onError } = options;
+    const formData = new FormData();
+    formData.append("profile_img", file);
+
+    axios
+      .put(`http://localhost:3001/user/${userid}/image`, formData, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+      .then((response) => {
+        onSuccess(response.data, file);
+      })
+      .catch((error) => {
+        onError(error);
+      });
+  }
+
+  const handleChange = ({ fileList: newFileList }) => {
+    // console.log(newFileList);
+    // if (newFileList[0].status !== "uploading") {
+    //   console.log(newFileList);
+    // }
+    // if (newFileList[0].status === "done") {
+    //   console.log(`${newFileList[0].name} file uploaded successfully`);
+    //   const formData = new FormData();
+    //   formData.append("image", newFileList[0].originFileObj);
+    //   axios
+    //     .put(`http://localhost:3001/user/${userid}/image`, formData, {
+    //       headers: {
+    //         Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    //       },
+    //     })
+    //     .then((response) => {
+    //       console.log(response);
+    //     })
+    //     .catch((error) => {
+    //       console.log(error);
+    //     });
+    // }
+    setFileList(newFileList);
+  };
   const uploadButton = (
     <div>
       <PlusOutlined />
@@ -119,7 +161,7 @@ const Profile = () => {
               <Col className="df" lg={24}>
                 <Upload
                   style={{ width: "1000px" }}
-                  action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                  customRequest={sendUploadRequest}
                   listType="picture-card"
                   fileList={fileList}
                   onChange={handleChange}

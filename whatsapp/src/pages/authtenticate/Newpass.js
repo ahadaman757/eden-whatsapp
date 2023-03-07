@@ -24,6 +24,7 @@ const Newpass = () => {
       })
       .then((response) => {
         console.log(response.data);
+        navigate("/confirompass");
       })
       .catch((error) => {
         console.log(error);
