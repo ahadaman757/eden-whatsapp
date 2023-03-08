@@ -20,7 +20,10 @@ const Templete = () => {
   const [loading1, setLoading1] = useState(true);
   const [refrsh, setrefrsh] = useState(false);
   const [modal2, contextHolder2] = Modal.useModal();
+  const [templateData, setTemplateData] = useState();
   const [Currentid, setCurrentid] = useState();
+  const [CurrentTemplate, setCurrentTemplate] = useState();
+  const [temp1, settemp1] = useState();
   const handleDelete = (id) => {
     Modal.confirm({
       title: "Do you want to delete this template?",
@@ -84,8 +87,12 @@ const Templete = () => {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
-  const showModal1 = () => {
+  const showModal1 = (templateData) => {
+    const template = userData.filter((item) => item.id === Currentid)[0];
+    console.log(template, "asdsa");
+
     setIsModalOpen1(true);
+    setCurrentTemplate(template);
   };
   const handleOk1 = () => {
     setIsModalOpen1(false);
@@ -257,7 +264,7 @@ const Templete = () => {
         </Modal>
       </div>
       <div className="pt-1">
-        <Row className="px-2 jcb">
+        <Row className="px-md-2 jcb">
           {!loading ? (
             userData.map((Item) => {
               return (
@@ -276,7 +283,7 @@ const Templete = () => {
                           {Item.template_message}
                         </p>
                       </div>
-                      <div className="df jcb py-1">
+                      <div className="df jcb fw py-1">
                         <div>
                           <Space>
                             <button
@@ -284,7 +291,7 @@ const Templete = () => {
                                 handleDelete(Item.id);
                                 console.log(Item.id, "Asdasdasd");
                               }}
-                              className={`${Styles.deletbtn}`}
+                              className={`mb-1 ${Styles.deletbtn}`}
                             >
                               <span>
                                 <DeleteOutlined />
@@ -316,7 +323,18 @@ const Templete = () => {
                         >
                           <Form
                             initialValues={{
-                              remember: true,
+                              template_label: loading
+                                ? CurrentTemplate.template_label
+                                : "",
+                              template_category: loading
+                                ? CurrentTemplate.template_category
+                                : "",
+                              template_message: loading
+                                ? CurrentTemplate.template_message
+                                : "",
+                              URL: loading ? CurrentTemplate.URL : "",
+
+                              remember: false,
                             }}
                             onFinish={onFinish1}
                             onFinishFailed={onFinishFailed1}

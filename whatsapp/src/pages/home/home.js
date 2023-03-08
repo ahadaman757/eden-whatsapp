@@ -495,7 +495,7 @@ const Home = () => {
           </div>
           <div className={` ${Styles.gradcon}`}>
             <div className={`container p-4 ${Styles.gradcon}`}>
-              <Row className={`mx-5 df jcb p-4 mt-4 ${Styles.footducon}`}>
+              <Row className={`mx-md-5 df jcb p-md-4 mt-4 ${Styles.footducon}`}>
                 <Col>
                   <h1 className="fon30 fontw7">
                     Get Your

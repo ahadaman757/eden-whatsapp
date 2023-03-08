@@ -35,7 +35,7 @@ const Login = () => {
   return (
     <div>
       <Row>
-        <Col className={` container pt-4 ${Styles.graydin}`} lg={12}>
+        <Col lg={12} md={12} className={` container pt-4 ${Styles.graydin}`}>
           <div className="px-3  fon25 fontw7">LOGOHERE</div>
           <div className={`df aic jcc px-3 ${Styles.graydinma}`}>
             <div>
@@ -48,7 +48,11 @@ const Login = () => {
             </div>
           </div>
         </Col>
-        <Col lg={12} className="container df aic jcc">
+        <Col
+          lg={12}
+          md={12}
+          className={`container df aic jcc mt-3 ${Styles.Form}`}
+        >
           <div>
             <p className="fon16 fontw4">We are glad to see you again!</p>
             <h1 className="fon30 fontw7">Login to You Account.</h1>

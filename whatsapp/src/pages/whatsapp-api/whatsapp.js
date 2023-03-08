@@ -46,7 +46,7 @@ const WhatsAppApi = () => {
               </div>
             </Col>
             <Col lg={12}>
-              <img src={herosecimg} />
+              <img className={`${Styles.herosecimg}`} src={herosecimg} />
             </Col>
           </Row>
         </div>
@@ -54,7 +54,7 @@ const WhatsAppApi = () => {
       <div className="container py-5">
         <Row>
           <Col className="df jcc" lg={12}>
-            <img src={secimg} />
+            <img className={`${Styles.secimg}`} src={secimg} />
           </Col>
           <Col className="df jcc aic" lg={12}>
             <div>

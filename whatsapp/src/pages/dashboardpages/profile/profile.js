@@ -16,12 +16,13 @@ const getBase64 = (file) =>
 
 const Profile = () => {
   const [previewOpen, setPreviewOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [previewImage, setPreviewImage] = useState("");
   const [previewTitle, setPreviewTitle] = useState("");
   const [fileList, setFileList] = useState([]);
   const [refrsh, setrefrsh] = useState(false);
   const handleCancel = () => setPreviewOpen(false);
-  const [userdata, setUserdata] = useState();
+  const [userdata, setUserdata] = useState([]);
   const [emailvalue, setemailvalue] = useState();
   const [userid, setuserid] = useState();
   useEffect(() => {
@@ -36,6 +37,8 @@ const Profile = () => {
         setUserdata(response.data.details[0]);
         setemailvalue(response.data.details[0].email);
         setuserid(response.data.details[0].id);
+        console.log(userdata.first_name, "Asas");
+        setLoading(false);
         setrefrsh(true);
       })
       .catch((error) => {
@@ -151,6 +154,7 @@ const Profile = () => {
           <div></div>
           <Form
             initialValues={{
+              first_name: userdata.first_name,
               remember: true,
             }}
             onFinish={onFinish}
@@ -198,7 +202,10 @@ const Profile = () => {
                     },
                   ]}
                 >
-                  <Input className={` ${Styles.inputf}`} />
+                  <Input
+                    defaultValue={"asasas"}
+                    className={` ${Styles.inputf}`}
+                  />
                 </Form.Item>
               </Col>
               <Col lg={10} className="me-1">

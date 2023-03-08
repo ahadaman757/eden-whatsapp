@@ -24,3 +24,12 @@
   border-radius: 10px;
   color: white;
 }
+.herosecimg {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .secimg {
+    width: 100%;
+  }
+}

@@ -175,7 +175,7 @@ const Dashboard = () => {
                 <img src={settingicon} />
               </div>
             </div>
-            <div>
+            <div className={`${Styles.snum}`}>
               <Skeleton
                 style={{ width: "200px", height: "30px" }}
                 loading={loading}
@@ -188,16 +188,18 @@ const Dashboard = () => {
                 </p>
               </Skeleton>
             </div>
-            <div>
+            <div className={`${Styles.snam}`}>
               <Skeleton
                 style={{ width: "200px", height: "30px" }}
                 loading={loading}
                 paragraph={{ rows: 1 }}
               >
-                <p className="fon16 fontw6 m-0 me-2">
-                  Hello, {loading ? "" : userData.first_name}{" "}
-                  {loading ? "" : userData.last_name}
-                </p>
+                <div className={``}>
+                  <p className="fon16 fontw6 m-0 me-2">
+                    Hello, {loading ? "" : userData.first_name}{" "}
+                    {loading ? "" : userData.last_name}
+                  </p>
+                </div>
               </Skeleton>
 
               <p className="fon16 fontw6 m-0 c61 me-2">

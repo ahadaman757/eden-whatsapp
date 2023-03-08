@@ -57,7 +57,7 @@
   border-radius: 10px;
 }
 .dumdata {
-  width: 377px;
+  width: 297px;
   height: 159px;
 
   background: #e9e9e9;
@@ -162,6 +162,13 @@
     color: #252525;
   }
   .mobimg {
-    width: 354px;
+    width: 290px;
+  }
+  .plancard {
+    width: 290px;
+    height: 407px;
+
+    background: #ffffff;
+    border-radius: 10px;
   }
 }

@@ -6,7 +6,7 @@ const db = mysql.createPool({
   host: process.env.DATABASE_HOST,
   host: process.env.DATABASE_HOST,
   user: "root",
-  password: "",
+  password: "asdf",
   database: "whatsapp-db",
 });
 

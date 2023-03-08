@@ -65,7 +65,7 @@ const MyTable = () => {
   ];
 
   return (
-    <Spin spinning={loading}>
+    <Spin scroll={{ scrollX: 200 }} spinning={loading}>
       <Table dataSource={data} columns={columns} />
     </Spin>
   );

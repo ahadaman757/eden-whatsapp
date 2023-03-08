@@ -9,8 +9,8 @@ import Tablejs from "../../../component/table/table";
 const Dashboardmain = () => {
   return (
     <div>
-      <div className={`df aic jcb py-2  ${Styles.dashmin}`}>
-        <div className={`df aic px-2 ${Styles.hr}`}>
+      <div className={`df aic  jcb fw py-2  ${Styles.dashmin}`}>
+        <div className={`df aic mb-1 px-2 ${Styles.hr}`}>
           <div className={`df aic jcc me-1 ${Styles.bacolor}`}>
             <img src={sendicon} />
           </div>
@@ -19,7 +19,7 @@ const Dashboardmain = () => {
             <p className="m-0 fon20 fontw7">3</p>
           </div>
         </div>
-        <div className={`df aic px-2 ${Styles.hr}`}>
+        <div className={`df aic mb-1 px-2 ${Styles.hr}`}>
           <div className={`df aic jcc me-1 ${Styles.bulecolor}`}>
             <img src={seenicon} />
           </div>
@@ -28,7 +28,7 @@ const Dashboardmain = () => {
             <p className="m-0 fon20 fontw7">3</p>
           </div>
         </div>
-        <div className={`df aic px-2 ${Styles.hr}`}>
+        <div className={`df aic mb-1 px-2 ${Styles.hr}`}>
           <div className={`df aic jcc me-1 ${Styles.orcolor}`}>
             <img src={pageicon} />
           </div>
@@ -37,7 +37,7 @@ const Dashboardmain = () => {
             <p className="m-0 fon20 fontw7">3</p>
           </div>
         </div>
-        <div className={`df aic px-2 `}>
+        <div className={`df aic mb-1 px-2 `}>
           <div className={`df aic jcc me-1 ${Styles.orcolor}`}>
             <img src={pageicon} />
           </div>
@@ -82,7 +82,7 @@ const Dashboardmain = () => {
       <div>
         <div className={`${Styles.Tablecobtainer}`}>
           <h1 className="m-0 p-1 fon18 fontw6">Recent Activity</h1>
-          <Tablejs />
+          {/* <Tablejs /> */}
         </div>
       </div>
     </div>

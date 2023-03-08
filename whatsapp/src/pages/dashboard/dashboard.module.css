@@ -45,3 +45,19 @@
 .settnot {
   padding-left: 10px;
 }
+
+@media (max-width: 1200px) {
+  .bage {
+    display: none;
+  }
+}
+@media (max-width: 920px) {
+  .snum {
+    display: none !important;
+  }
+}
+@media (max-width: 720px) {
+  .snam {
+    display: none !important;
+  }
+}

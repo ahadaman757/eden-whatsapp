@@ -86,7 +86,7 @@ const Pricing = () => {
         </Row>
       </div>
       <div className="py-4">
-        <table className="container  ">
+        <table className={`container ${Styles.table}  `}>
           <tr className={` pb-1  ${Styles.titletable}`}>
             <th className="fon16 ps-1 pb-1 df jcs fontw6">FEATURES</th>
             <th className="fon16 pb-1 fontw6">BASIC</th>
@@ -168,9 +168,12 @@ const Pricing = () => {
           <tr className={`   ${Styles}`}>
             <th className="fon16 py-1 df jcs fontw4"></th>{" "}
             <th className="py-1">
-              <button className={`fon16 fontw6  ${Styles.tablebtn}`}>
-                Choose Plan
-              </button>
+              <div>
+                {" "}
+                <button className={`fon16 fontw6 m-1  ${Styles.tablebtn}`}>
+                  Choose Plan
+                </button>
+              </div>
             </th>
             <th className="py-1">
               {" "}

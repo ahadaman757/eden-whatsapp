@@ -117,9 +117,9 @@ const Signup = () => {
               onFinish={onFinish}
               onFinishFailed={onFinishFailed}
             >
-              <div className="df jcb">
+              <Row className=" df jcb ">
                 {" "}
-                <div>
+                <Col lg={11}>
                   <p className="fon18 m-0 fontw5">First Name*</p>
                   <Form.Item
                     name="first_name"
@@ -132,8 +132,8 @@ const Signup = () => {
                   >
                     <Input className={`mt-1 px-1 ${Styles.Inputfromf}`} />
                   </Form.Item>
-                </div>
-                <div>
+                </Col>
+                <Col lg={11}>
                   <p className="fon18 m-0 fontw5">Last Name*</p>
                   <Form.Item
                     name="last_name"
@@ -146,8 +146,8 @@ const Signup = () => {
                   >
                     <Input className={`mt-1 px-1 ${Styles.Inputfromf}`} />
                   </Form.Item>
-                </div>
-              </div>
+                </Col>
+              </Row>
               <div>
                 <p className="fon18 m-0 fontw5">Email Address*</p>
                 <Form.Item
