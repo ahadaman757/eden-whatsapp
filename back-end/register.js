@@ -15,7 +15,7 @@ router.post("/", (req, res) => {
 
   db.query("SELECT * FROM users WHERE email = ?", [email], (err, result) => {
     if (err) {
-      res.status(500).json({ message: "Error checking for duplicate email" });
+      res.status(500).json({ message: err });
       return;
     }
 
