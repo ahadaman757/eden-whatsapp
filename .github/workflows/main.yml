@@ -17,10 +17,11 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: |
-          npm i --force
+          cd whatsapp
           pm2 stop 0
           pm2 stop 1
-          cd back-end
+          npm i --force
+          cd ../back-end
           npm i --force
           pm2 start 0
           pm2 start 1
