@@ -14,16 +14,21 @@ const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const onFinish = (values) => {
     console.log("Success:", values);
-
+    function handleLogin() {
+      // Make API request to login and retrieve access token
+      const accessToken = "YOUR_ACCESS_TOKEN_HERE";
+      localStorage.setItem("access_token", accessToken);
+      navigate("/dashboard");
+    }
     axios
-      .post("http://139.144.2.43:3001/login", {
+      .post("http://localhost:3001/login", {
         email: values.email,
         password: values.password,
       })
       .then((response) => {
         console.log(response.data);
         localStorage.setItem("accessToken", response.data.token);
-        navigate("/dashboard");
+        handleLogin();
       })
       .catch((error) => {
         console.log(error);

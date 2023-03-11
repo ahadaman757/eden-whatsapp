@@ -4,7 +4,15 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
 const db = require("./db");
-
+function generateRandomText(length) {
+  const characters =
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  let result = "";
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  return result;
+}
 // Route to handle POST requests to the /register endpoint
 router.post("/", (req, res) => {
   const first_name = req.body.first_name;
@@ -38,29 +46,46 @@ router.post("/", (req, res) => {
         [first_name, last_name, whatsapp_number, email, hashedPassword],
         (err, result) => {
           if (err) {
-            res
-              .status(500)
-              .json({ message: "Error inserting data into the database" });
+            res.status(500).json({ message: err });
             return;
           }
 
-          // Generate the JWT token
-          const privateKey = process.env.JWT_PRIVATE_KEY;
-          const token = jwt.sign(
-            { email: email },
-            privateKey,
-            { expiresIn: "1h" }, // Token expiration time
-            (err, token) => {
+          // Get the ID of the newly inserted user
+          const user_id = result.insertId;
+
+          // Generate a random code
+          const code = generateRandomText(30);
+
+          // Insert a new row into the tokens table
+          db.query(
+            "INSERT INTO token (code,user_id ) VALUES (?, ?)",
+            [code, user_id],
+            (err, result) => {
               if (err) {
                 res.status(500).json({
-                  message: "Error generating JWT token",
+                  message: err,
                 });
                 return;
               }
 
-              res
-                .status(200)
-                .json({ message: "Data inserted successfully", token: token });
+              // Generate the JWT token
+              const privateKey = process.env.JWT_PRIVATE_KEY;
+              const token = jwt.sign(
+                { email: email },
+                privateKey,
+                { expiresIn: "1h" }, // Token expiration time
+                (err, token) => {
+                  if (err) {
+                    res.status(500).json({ message: err });
+                    return;
+                  }
+
+                  res.status(200).json({
+                    message: "Data inserted successfully",
+                    token: token,
+                  });
+                }
+              );
             }
           );
         }

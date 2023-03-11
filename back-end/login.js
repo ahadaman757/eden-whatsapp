@@ -42,8 +42,14 @@ router.post("/", (req, res) => {
       if (result) {
         // Passwords match - generate JWT token
         const privateKey = process.env.JWT_PRIVATE_KEY;
+        let user_type = 0;
+
+        if (user.user_type === 1) {
+          user_type = 1;
+        }
+
         const token = jwt.sign(
-          { email: email },
+          { email: email, type: user_type },
           privateKey,
           { expiresIn: "24h" }, // Token expiration time
           (err, token) => {
@@ -59,6 +65,7 @@ router.post("/", (req, res) => {
                 id: user.id,
                 name: user.first_name + user.last_name,
                 email: user.email,
+                type: user_type,
               },
             });
           }

@@ -4,9 +4,8 @@ const mysql = require("mysql");
 const db = mysql.createPool({
   connectionLimit: 10,
   host: process.env.DATABASE_HOST,
-  host: process.env.DATABASE_HOST,
   user: "root",
-  password: "asdf",
+  password: "",
   database: "whatsapp-db",
 });
 

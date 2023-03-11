@@ -17,6 +17,12 @@ import { useNavigate } from "react-router-dom";
 
 import Axios from "axios";
 const Signup = () => {
+  function handleLogin() {
+    // Make API request to login and retrieve access token
+    const accessToken = "YOUR_ACCESS_TOKEN_HERE";
+    localStorage.setItem("access_token", accessToken);
+    navigate("/dashboard");
+  }
   const navigate = useNavigate();
   const [value, setValue] = useState();
   const getFlag = (short = "string") => {
@@ -41,7 +47,7 @@ const Signup = () => {
       .then((response) => {
         console.log(response.data);
         localStorage.setItem("accessToken", response.data.token);
-        navigate("/dashboard");
+        handleLogin();
       })
       .catch((error) => {
         console.log(error);

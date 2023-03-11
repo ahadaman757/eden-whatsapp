@@ -49,6 +49,11 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const acoStyle = {};
   useEffect(() => {
+    const accessToken = localStorage.getItem("access_token");
+    if (!accessToken) {
+      // Access token doesn't exist, route user to login page
+      navigate("/login");
+    }
     setTimeout(() => {
       axios
         .get("http://localhost:3001/protected-route", {

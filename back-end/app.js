@@ -33,6 +33,7 @@ const upload = multer({
 
 // Load environment variables from the .env file
 dotenv.config({ path: "./.env" });
+
 app.use(cors({ origin: "http://localhost:3000" }));
 
 // Use the express.json middleware to parse JSON requests
@@ -52,6 +53,48 @@ const transporter = nodemailer.createTransport({
 });
 
 // Register the router as middleware
+app.delete("/user/:id", (req, res) => {
+  // Check if the user making the request is an admin
+  const authHeader = req.headers.authorization;
+  console.log("REQ RECIEVED");
+  if (!authHeader) {
+    res.status(401).json({ message: "Authorization header not found" });
+    return;
+  }
+
+  const token = authHeader.split(" ")[1];
+  jwt.verify(token, process.env.JWT_PRIVATE_KEY, (err, decoded) => {
+    if (err) {
+      res.status(401).json({ message: "Invalid access token" });
+      return;
+    }
+
+    if (decoded.type !== 1) {
+      res.status(403).json({ message: "Unauthorized" });
+      return;
+    }
+
+    // If the user making the request is an admin, proceed with the deletion
+    const userId = req.params.id;
+    console.log(userId);
+
+    db.query("DELETE FROM users WHERE id = ?", [userId], (err, result) => {
+      if (err) {
+        res
+          .status(500)
+          .json({ message: "Error deleting user from the database" });
+        return;
+      }
+
+      if (result.affectedRows === 0) {
+        res.status(404).json({ message: "User not found" });
+        return;
+      }
+
+      res.status(200).json({ message: "User deleted successfully" });
+    });
+  });
+});
 app.post("/reset-pass", (req, res) => {
   const { code, newPassword } = req.body;
 
@@ -362,6 +405,7 @@ app.get("/category", (req, res) => {
   db.query("SELECT name, id FROM category ", (err, result) => {
     if (err) {
       res.status(500).json({ message: err });
+      console.log(err);
       return;
     } else {
       res.json({ details: result });
@@ -394,6 +438,28 @@ app.post("/templates", validateToken, (req, res) => {
   } catch (err) {
     res.status(401).json({ message: "Invalid access token" });
   }
+});
+
+app.post("/token/:id", validateToken, (req, res) => {
+  const Id = req.params.id;
+  console.log(Id);
+  const { used } = req.body;
+
+  db.query(
+    "UPDATE token SET used = ? WHERE id = ? ",
+    [Id, used],
+    (err, result) => {
+      if (err) {
+        res.status(500).json({ message: err });
+        return;
+      } else if (result.affectedRows > 0) {
+        res.status(404).json({ message: "used not found." });
+        return;
+      } else {
+        res.json({ message: "used updated successfully." });
+      }
+    }
+  );
 });
 
 // Start the server

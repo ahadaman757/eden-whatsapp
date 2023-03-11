@@ -6,12 +6,12 @@ const Piechart = () => {
   const data = [
     {
       type: "a",
-      value: 27,
+      value: 50,
     },
 
     {
       type: "b",
-      value: 5,
+      value: 50,
     },
   ];
   const config = {

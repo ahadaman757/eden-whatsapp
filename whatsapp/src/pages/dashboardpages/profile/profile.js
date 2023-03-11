@@ -141,7 +141,7 @@ const Profile = () => {
     console.log("Failed:", errorInfo);
   };
   return (
-    <div className="p-2">
+    <div className="p-md-2">
       <div className={`p-1 ${Styles.profhed}`}>
         <div className={`${Styles.hedbo}`}>
           <h1 className="fon20 fontw5">Personal Information</h1>
