@@ -9,7 +9,7 @@ const MyTable = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("http://139.144.2.43:3004/messagedata", {
+      .get("http://139.144.2.43:3001/messagedata", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
@@ -68,11 +68,11 @@ const MyTable = () => {
     <Spin spinning={loading}>
       <Table
         bordered
-        size="middle"
-        scroll={{
-          x: "calc(700px + 50%)",
-          y: 240,
-        }}
+        // size="middle"
+        // scroll={{
+        //   x: "calc(700px + 50%)",
+        //   y: 240,
+        // }}
         dataSource={data}
         columns={columns}
       />
@@ -137,7 +137,7 @@ export default MyTable;
 //   const [state, setstate] = useState({});
 //   useEffect(() => {
 //     axios
-//       .get("http://139.144.2.43:3004/messagedata", {
+//       .get("http://139.144.2.43:3001/messagedata", {
 //         headers: {
 //           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
 //         },
@@ -175,7 +175,7 @@ export default MyTable;
 //   }, []);
 
 // const getData = async () => {
-//   const res = await Axios.get("http://139.144.2.43:3004/messagedata");
+//   const res = await Axios.get("http://139.144.2.43:3001/messagedata");
 
 //   setstate(res.data);
 //   setloading(false);

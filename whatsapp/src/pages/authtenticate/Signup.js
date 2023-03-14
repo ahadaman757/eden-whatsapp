@@ -31,7 +31,7 @@ const Signup = () => {
   const onFinish = (values) => {
     console.log("Success:", value, values);
 
-    Axios.post("http://139.144.2.43:3004/register", {
+    Axios.post("http://139.144.2.43:3001/register", {
       first_name: values.first_name,
       last_name: values.last_name,
       email: values.email,

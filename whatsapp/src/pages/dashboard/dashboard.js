@@ -60,7 +60,7 @@ const Dashboard = () => {
   useEffect(() => {
     setTimeout(() => {
       axios
-        .get("http://139.144.2.43:3004/protected-route", {
+        .get("http://139.144.2.43:3001/protected-route", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },

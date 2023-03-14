@@ -18,7 +18,7 @@ const Newpass = () => {
   const onFinish = (values) => {
     console.log("Success:", values);
     axios
-      .post(`http://139.144.2.43:3004/reset-pass`, {
+      .post(`http://139.144.2.43:3001/reset-pass`, {
         newPassword: values.password,
         code: code,
       })

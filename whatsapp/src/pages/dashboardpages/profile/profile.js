@@ -27,7 +27,7 @@ const Profile = () => {
   const [userid, setuserid] = useState();
   useEffect(() => {
     axios
-      .get(`http://139.144.2.43:3004/user`, {
+      .get(`http://139.144.2.43:3001/user`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
@@ -62,7 +62,7 @@ const Profile = () => {
     formData.append("profile_img", file);
 
     axios
-      .put(`http://139.144.2.43:3004/user/${userid}/image`, formData, {
+      .put(`http://139.144.2.43:3001/user/${userid}/image`, formData, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
@@ -85,7 +85,7 @@ const Profile = () => {
     //   const formData = new FormData();
     //   formData.append("image", newFileList[0].originFileObj);
     //   axios
-    //     .put(`http://139.144.2.43:3004/user/${userid}/image`, formData, {
+    //     .put(`http://139.144.2.43:3001/user/${userid}/image`, formData, {
     //       headers: {
     //         Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
     //       },
@@ -116,7 +116,7 @@ const Profile = () => {
     console.log("Success:", values);
     axios
       .put(
-        `http://139.144.2.43:3004/user/${userid}`,
+        `http://139.144.2.43:3001/user/${userid}`,
         {
           first_name: values.first_name,
           last_name: values.last_name,

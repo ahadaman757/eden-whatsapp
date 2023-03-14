@@ -11,7 +11,7 @@ const Marketing = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("http://139.144.2.43:3004/marketing", {
+      .get("http://139.144.2.43:3001/marketing", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
@@ -82,11 +82,11 @@ Phone:FirstName:LastName"
           </div>
           <Table
             bordered
-            size="middle"
-            scroll={{
-              x: "calc(700px + 50%)",
-              y: 240,
-            }}
+            // size="middle"
+            // scroll={{
+            //   x: "calc(700px + 50%)",
+            //   y: 240,
+            // }}
             columns={columns}
             dataSource={data}
           />
