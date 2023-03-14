@@ -43,11 +43,20 @@ const Dashboard = () => {
   const [accordian1, setaccordian1] = useState(false);
   const [userData, setUserdata] = useState();
   const [loading, setLoading] = useState(true);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const [resposiv, setres] = useState();
 
   const [collapsed, setCollapsed] = useState(false);
   //   const history = useHistory();
   const navigate = useNavigate();
   const acoStyle = {};
+  useEffect(() => {
+    const handleResize = () => setScreenWidth(window.innerWidth);
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   useEffect(() => {
     setTimeout(() => {
       axios
@@ -65,16 +74,12 @@ const Dashboard = () => {
     // GET USER DATA
   }, []);
 
-  function handel(id) {
-    if ((id = "profile")) {
-      <Profile />;
-    }
-  }
   return (
     <div className={` ${Styles.main}`}>
       <Sider
+        // style={{ zIndex: screenWidth === 768 ? "" : resposiv ? "-1" : "1" }}
         width={240}
-        className={` p-2  ${Styles.manuem}`}
+        className={` p-2  ${Styles.manuem} `}
         trigger={null}
         collapsible
         collapsed={collapsed}
@@ -83,13 +88,31 @@ const Dashboard = () => {
           className={`df ${collapsed ? "" : "px-2"} ${collapsed ? "jcc" : ""} `}
         >
           <h1 className="fon20 me-1">{collapsed ? "" : "LGOGOHERE"}</h1>
-          {React.createElement(
-            collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
-            {
-              className: "trigger",
-              onClick: () => setCollapsed(!collapsed),
-            }
-          )}
+          {/* <button
+            className={`${Styles.mobtn}`}
+            onClick={() => setres(!resposiv)}
+          >
+            <span>
+              <MenuUnfoldOutlined />
+            </span>
+          </button>{" "}
+          <button
+            className={`trigger ${Styles.switch}`}
+            onClick={() => setCollapsed(!collapsed)}
+          >
+            <span>
+              {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+            </span>
+          </button> */}
+          <div className={`trigger ${Styles.switch}`}>
+            {React.createElement(
+              collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
+              {
+                className: "trigger",
+                onClick: () => setCollapsed(!collapsed),
+              }
+            )}
+          </div>
         </div>
         <Menu
           className="fon16 fontw6 m-0 py-2"
@@ -151,13 +174,27 @@ const Dashboard = () => {
           >
             <Link to="setting">Setting</Link>
           </Menu.Item>
+          <Menu.Item
+            className={`${Styles.ssd}`}
+            key="6"
+            icon={<Icon icon="ep:setting" style={{ fontSize: "23px" }} />}
+          >
+            <Link to="marketing">Marketing </Link>
+          </Menu.Item>
         </Menu>
       </Sider>
 
       <div className={`${Styles.navb}`}>
         <div className={`p-1 df aic jcb ${Styles.nav}`}>
           <div className="df">
-            {" "}
+            <button
+              className={`${Styles.mobtn}`}
+              onClick={() => setres(!resposiv)}
+            >
+              <span>
+                <MenuUnfoldOutlined />
+              </span>
+            </button>{" "}
             <div>
               <h1 className="fon20 fontw6 m-0 me-2">Dashboard</h1>
             </div>{" "}

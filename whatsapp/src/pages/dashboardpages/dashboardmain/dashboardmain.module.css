@@ -43,8 +43,27 @@
   border: 1px solid #b6b6b6;
   border-radius: 5px;
 }
+.chartbtn1 {
+  width: 112px;
+  height: 32px;
+
+  background: #efefef;
+  border: 1px solid #b6b6b6;
+  border-radius: 5px;
+}
 .Tablecobtainer {
   background: #ffffff;
   border: 1px solid #ececec;
   border-radius: 10px;
+}
+@media (max-width: 720px) {
+  .chartbtn1 {
+    margin-top: 5px;
+  }
+  .chartbtn {
+    margin-left: 5px;
+  }
+  .chartcon {
+    margin-bottom: 10px;
+  }
 }

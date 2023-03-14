@@ -141,7 +141,7 @@ const Profile = () => {
     console.log("Failed:", errorInfo);
   };
   return (
-    <div className="p-2">
+    <div className="p-md-2">
       <div className={`p-1 ${Styles.profhed}`}>
         <div className={`${Styles.hedbo}`}>
           <h1 className="fon20 fontw5">Personal Information</h1>
@@ -162,7 +162,7 @@ const Profile = () => {
             autoComplete="off"
           >
             <Row>
-              <Col className="df" lg={24}>
+              <Col className="df" lg={24} md={24}>
                 <Upload
                   style={{ width: "1000px" }}
                   customRequest={sendUploadRequest}
@@ -173,7 +173,7 @@ const Profile = () => {
                   {fileList.length >= 1 ? null : uploadButton}
                 </Upload>
               </Col>
-              <Col lg={10} className="me-1">
+              <Col lg={10} md={24} className="me-1">
                 {" "}
                 <label className="fon16 fontw5">First Name</label>
                 <Form.Item
@@ -189,7 +189,7 @@ const Profile = () => {
                   <Input className={` ${Styles.inputf}`} />
                 </Form.Item>
               </Col>
-              <Col lg={10} className="me-1">
+              <Col lg={10} md={24} className="me-1">
                 {" "}
                 <label className="fon16 fontw5">Last Name</label>
                 <Form.Item
@@ -208,14 +208,14 @@ const Profile = () => {
                   />
                 </Form.Item>
               </Col>
-              <Col lg={10} className="me-1">
+              <Col lg={10} md={24} className="me-1">
                 {" "}
                 <label className="fon16 fontw5">Email Address</label>
                 <Form.Item className="mt-1">
                   <Input value={emailvalue} className={` ${Styles.inputf}`} />
                 </Form.Item>
               </Col>
-              <Col lg={10} className="me-1">
+              <Col lg={10} md={24} className="me-1">
                 {" "}
                 <label className="fon16 fontw5">WhatsApp Number</label>
                 <Form.Item

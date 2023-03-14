@@ -26,6 +26,7 @@ import Styles from "./home.module.css";
 import Footer from "../../component/Footer/Footer";
 import PhoneInput from "react-phone-number-input";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Home = () => {
   const [value, setValue] = useState();
@@ -69,6 +70,42 @@ const Home = () => {
     //   },
     // ],
   });
+  const onFinish = (values) => {
+    console.log("Success:", values);
+    axios
+      .post("http://139.144.2.43:3004/send-message", {
+        number: values.number,
+        message: `Hey ${values.first_name}! Thank you for choosing us. Your order has been placed successfully and we are reaching out to you for confirmation of 100$ item`,
+        from: "saas@gmal.com",
+      })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
+  const onFinish1 = (values) => {
+    console.log("Success:", values);
+    axios
+      .post("http://139.144.2.43:3004/send-message", {
+        number: values.number,
+        message: `Hey ${values.first_name}! Thank you for choosing us. Your order has been placed successfully and we are reaching out to you for confirmation of 100$ item`,
+        from: "saas@gmal.com",
+      })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const onFinishFailed1 = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
 
   return (
     <>
@@ -327,22 +364,45 @@ const Home = () => {
                         onCancel={() => setOpen(false)}
                         width={300}
                       >
-                        <Form className="pt-2">
+                        <Form
+                          onFinish={onFinish}
+                          onFinishFailed={onFinishFailed}
+                          className="pt-2"
+                        >
                           <div className={`df jcc ${Styles.wtach}`}>
                             <img src={watch} />
                           </div>
                           <label>Name</label>
-                          <Form.Item>
+                          <Form.Item
+                            name="first_name"
+                            rules={[
+                              {
+                                required: true,
+                                message: "Please input your name!",
+                              },
+                            ]}
+                          >
                             <Input />
                           </Form.Item>
                           <label>Whatsapp Number</label>
-                          <Form.Item>
+                          <Form.Item
+                            name="number"
+                            rules={[
+                              {
+                                required: true,
+                                message: "Please input your number!",
+                              },
+                            ]}
+                          >
                             <PhoneInput
                               className={`mt-1 px-1  ${Styles.Inputfrom}`}
                               placeholder="Enter phone number"
                               value={value}
                               onChange={setValue}
                             />
+                          </Form.Item>
+                          <Form.Item>
+                            <Button htmlType="submit">submit</Button>
                           </Form.Item>
                         </Form>
                         <div className="df jcb">
@@ -373,22 +433,45 @@ const Home = () => {
                         onCancel={() => setOpen1(false)}
                         width={300}
                       >
-                        <Form className="pt-2">
+                        <Form
+                          onFinish={onFinish1}
+                          onFinishFailed={onFinishFailed1}
+                          className="pt-2"
+                        >
                           <div className={`df jcc ${Styles.wtach}`}>
                             <img src={shose} />
                           </div>
                           <label>Name</label>
-                          <Form.Item>
+                          <Form.Item
+                            name="first_name"
+                            rules={[
+                              {
+                                required: true,
+                                message: "Please input your name!",
+                              },
+                            ]}
+                          >
                             <Input />
                           </Form.Item>
                           <label>Whatsapp Number</label>
-                          <Form.Item>
+                          <Form.Item
+                            name="number"
+                            rules={[
+                              {
+                                required: true,
+                                message: "Please input your number!",
+                              },
+                            ]}
+                          >
                             <PhoneInput
                               className={`mt-1 px-1  ${Styles.Inputfrom}`}
                               placeholder="Enter phone number"
                               value={value}
                               onChange={setValue}
                             />
+                          </Form.Item>
+                          <Form.Item>
+                            <Button htmlType="submit">submit</Button>
                           </Form.Item>
                         </Form>
                         <div className="df jcb">

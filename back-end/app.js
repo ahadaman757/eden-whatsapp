@@ -354,6 +354,34 @@ app.get("/messagedata", validateToken, (req, res) => {
     }
   );
 });
+app.get("/marketing", validateToken, (req, res) => {
+  // Do something with the authenticated user data
+  const user = req.decodedToken;
+  // res.json({ message: `Hello ${user.email}!` });
+
+  db.query(
+    "SELECT name, email, medium, whatsapp_num,date FROM marketing WHERE email = ?",
+    [user.email],
+    (err, messageResult) => {
+      if (err) {
+        res.status(500).json({ message: err });
+        return;
+      }
+
+      const messageData = messageResult.map((row) => {
+        return {
+          name: row.name,
+          email: row.email,
+          medium: row.medium,
+          whatsapp_num: row.whatsapp_num,
+          date: row.date,
+        };
+      });
+
+      res.json({ messageData });
+    }
+  );
+});
 app.get("/category", (req, res) => {
   // Do something with the authenticated user data
   const user = req.decodedToken;

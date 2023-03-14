@@ -45,6 +45,15 @@
 .settnot {
   padding-left: 10px;
 }
+.switch {
+  border: none;
+  background: none;
+}
+.mobtn {
+  border: none;
+  background: none;
+  display: none;
+}
 
 @media (max-width: 1200px) {
   .bage {
@@ -56,8 +65,17 @@
     display: none !important;
   }
 }
-@media (max-width: 720px) {
+@media (max-width: 768px) {
   .snam {
     display: none !important;
   }
+  /* .manuem {
+    position: absolute;
+  }
+  .mobtn {
+    display: block;
+  }
+  .switch {
+    display: none;
+  } */
 }

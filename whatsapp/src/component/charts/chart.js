@@ -51,7 +51,7 @@ const Charts = () => {
     },
     {
       time: "2019-07",
-      value: 362,
+      value: 800,
       type: "bill",
     },
   ];

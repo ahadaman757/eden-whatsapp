@@ -23,6 +23,7 @@ import Templete from "./pages/dashboardpages/templete/templete";
 import Recentactivity from "./pages/dashboardpages/Recent Activity/recentactivity";
 import Setting from "./pages/dashboardpages/setting/setting";
 import Contacts from "./pages/dashboardpages/contacts/contacts";
+import Marketing from "./pages/dashboardpages/Marketing/marketing";
 const TRoutes = () => {
   return (
     <BrowserRouter>
@@ -44,6 +45,7 @@ const TRoutes = () => {
           <Route path="setting" element={<Setting />} />
           <Route path="contacts" element={<Contacts />} />
           <Route path="profile" element={<Profile />} />
+          <Route path="marketing" element={<Marketing />} />
         </Route>
       </Routes>
     </BrowserRouter>

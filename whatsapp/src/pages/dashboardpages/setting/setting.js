@@ -13,7 +13,11 @@ const Setting = () => {
           <Col lg={10} className="p-1">
             <div className={`  ${Styles.settcard} `}>
               <div className="p-1 df">
-                <img className="pe-1" src={icon3} />{" "}
+                <img
+                  className="pe-1"
+                  style={{ width: "90px", height: "90px" }}
+                  src={icon3}
+                />{" "}
                 <div>
                   <h1 className="fon20 fontw5">Personal Info</h1>
                   <p className="fon14 fontw4 c61">
@@ -33,7 +37,11 @@ const Setting = () => {
           <Col lg={10} className="p-1">
             <div className={`${Styles.settcard} m-1`}>
               <div className="p-1 df">
-                <img className="pe-1" src={icon1} />{" "}
+                <img
+                  className="pe-1"
+                  style={{ width: "90px", height: "90px" }}
+                  src={icon1}
+                />{" "}
                 <div>
                   <h1 className="fon20 fontw5">Security Setting</h1>
                   <p className="fon14 fontw4 c61">
@@ -54,7 +62,11 @@ const Setting = () => {
           <Col lg={10} className="p-1">
             <div className={`${Styles.settcard} `}>
               <div className="p-1 df">
-                <img className="pe-1" src={icon2} />{" "}
+                <img
+                  className="pe-1"
+                  style={{ width: "90px", height: "90px" }}
+                  src={icon2}
+                />{" "}
                 <div>
                   <h1 className="fon20 fontw5">Billing & Subscription</h1>
                   <p className="fon14 fontw4 c61">

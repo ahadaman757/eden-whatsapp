@@ -53,7 +53,16 @@ const Contacts = () => {
         <div className="px-1">
           <h1 className="m-0 py-1 fon18 fontw6">Recent Activity</h1>
         </div>
-        <Table columns={columns} dataSource={data} />
+        <Table
+          bordered
+          size="middle"
+          scroll={{
+            x: "calc(700px + 50%)",
+            y: 240,
+          }}
+          columns={columns}
+          dataSource={data}
+        />
       </div>
     </div>
   );

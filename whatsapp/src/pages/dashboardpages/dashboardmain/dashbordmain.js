@@ -51,11 +51,11 @@ const Dashboardmain = () => {
         <Row className="df jcb">
           <Col lg={15}>
             <div className={` ${Styles.chartcon}`}>
-              <div className={`df jcb p-1 ${Styles.chartheas}`}>
+              <div className={`df jcb fw p-1 ${Styles.chartheas}`}>
                 <h1 className="m-0 fon18 fontw6">
                   WhatsApp message sent chart
                 </h1>
-                <button className={`fon14 fontw5 c61 ${Styles.chartbtn}`}>
+                <button className={`fon14 fontw5 c61 ${Styles.chartbtn1}`}>
                   This Month
                 </button>
               </div>
@@ -66,7 +66,7 @@ const Dashboardmain = () => {
           </Col>
           <Col lg={8}>
             <div className={` ${Styles.chartcon}`}>
-              <div className={`df jcb p-1 ${Styles.chartheas}`}>
+              <div className={`df jcb  p-1 ${Styles.chartheas}`}>
                 <h1 className="m-0 fon18 fontw6">Read Statistic</h1>
                 <button className={`fon14 fontw5 c61 ${Styles.chartbtn}`}>
                   This Month
@@ -82,7 +82,7 @@ const Dashboardmain = () => {
       <div>
         <div className={`${Styles.Tablecobtainer}`}>
           <h1 className="m-0 p-1 fon18 fontw6">Recent Activity</h1>
-          {/* <Tablejs /> */}
+          <Tablejs />
         </div>
       </div>
     </div>

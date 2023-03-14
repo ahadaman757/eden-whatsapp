@@ -1,0 +1,17 @@
+.TextArea {
+  height: 249px !important;
+}
+.btns {
+  width: 177px;
+  height: 41px;
+  color: white;
+
+  background: #31ba45;
+  border-radius: 5px;
+}
+.resamain {
+  background: #ffffff;
+
+  border: 1px solid #ececec;
+  border-radius: 10px;
+}
