@@ -1,6 +1,10 @@
 body {
   margin: 0;
 }
+.parent-element {
+  max-height: 100vh;
+  overflow-y: auto;
+}
 .slick-dots {
   background: #e9eff7;
   bottom: 0 !important;
@@ -408,7 +412,10 @@ code {
     padding: 1rem;
   }
 }
-@media (max-width: 476px) {
+@media (max-width: 768px) {
+  .trigger {
+    display: none;
+  }
 }
 @media (min-width: 768px) {
   .container {

@@ -16,7 +16,7 @@ const Login = () => {
     console.log("Success:", values);
 
     axios
-      .post("http://localhost:3001/login", {
+      .post("http://139.144.2.43:3004/login", {
         email: values.email,
         password: values.password,
       })

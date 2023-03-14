@@ -9,7 +9,7 @@ const MyTable = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("http://localhost:3001/messagedata", {
+      .get("http://139.144.2.43:3004/messagedata", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
@@ -137,7 +137,7 @@ export default MyTable;
 //   const [state, setstate] = useState({});
 //   useEffect(() => {
 //     axios
-//       .get("http://localhost:3001/messagedata", {
+//       .get("http://139.144.2.43:3004/messagedata", {
 //         headers: {
 //           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
 //         },
@@ -175,7 +175,7 @@ export default MyTable;
 //   }, []);
 
 // const getData = async () => {
-//   const res = await Axios.get("http://localhost:3001/messagedata");
+//   const res = await Axios.get("http://139.144.2.43:3004/messagedata");
 
 //   setstate(res.data);
 //   setloading(false);

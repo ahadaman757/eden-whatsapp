@@ -15,7 +15,7 @@ const Forgetpass = () => {
   const onFinish = (values) => {
     console.log("Success:", values);
     axios
-      .post("http://localhost:3001/reset-password", {
+      .post("http://139.144.2.43:3004/reset-password", {
         email: values.email,
       })
       .then((response) => {

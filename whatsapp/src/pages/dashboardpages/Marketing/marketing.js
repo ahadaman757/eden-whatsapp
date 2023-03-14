@@ -11,7 +11,7 @@ const Marketing = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("http://localhost:3001/marketing", {
+      .get("http://139.144.2.43:3004/marketing", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },

@@ -33,7 +33,7 @@ const Templete = () => {
       cancelText: "No",
       onOk: () => {
         axios
-          .delete(`http://localhost:3001/template-details/${id}`, {
+          .delete(`http://139.144.2.43:3004/template-details/${id}`, {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
             },
@@ -53,7 +53,7 @@ const Templete = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/template-details", {
+      .get("http://139.144.2.43:3004/template-details", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
@@ -65,7 +65,7 @@ const Templete = () => {
       });
 
     axios
-      .get("http://localhost:3001/category", {
+      .get("http://139.144.2.43:3004/category", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
@@ -104,7 +104,7 @@ const Templete = () => {
     console.log("Success:", values);
     axios
       .post(
-        "http://localhost:3001/templates",
+        "http://139.144.2.43:3004/templates",
         {
           label: values.template_label,
           category: values.template_category,
@@ -134,7 +134,7 @@ const Templete = () => {
 
     axios
       .put(
-        `http://localhost:3001/template-details/${Currentid}`,
+        `http://139.144.2.43:3004/template-details/${Currentid}`,
         {
           template_label: values.template_label,
           template_category: values.template_category,

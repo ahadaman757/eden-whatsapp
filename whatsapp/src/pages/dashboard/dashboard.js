@@ -60,7 +60,7 @@ const Dashboard = () => {
   useEffect(() => {
     setTimeout(() => {
       axios
-        .get("http://localhost:3001/protected-route", {
+        .get("http://139.144.2.43:3004/protected-route", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },
@@ -77,7 +77,7 @@ const Dashboard = () => {
   return (
     <div className={` ${Styles.main}`}>
       <Sider
-        // style={{ zIndex: screenWidth === 768 ? "" : resposiv ? "-1" : "1" }}
+        style={{ zIndex: screenWidth === 768 ? "" : resposiv ? "-1" : "1" }}
         width={240}
         className={` p-2  ${Styles.manuem} `}
         trigger={null}
@@ -88,7 +88,7 @@ const Dashboard = () => {
           className={`df ${collapsed ? "" : "px-2"} ${collapsed ? "jcc" : ""} `}
         >
           <h1 className="fon20 me-1">{collapsed ? "" : "LGOGOHERE"}</h1>
-          {/* <button
+          <button
             className={`${Styles.mobtn}`}
             onClick={() => setres(!resposiv)}
           >
@@ -96,7 +96,7 @@ const Dashboard = () => {
               <MenuUnfoldOutlined />
             </span>
           </button>{" "}
-          <button
+          {/* <button
             className={`trigger ${Styles.switch}`}
             onClick={() => setCollapsed(!collapsed)}
           >
@@ -104,15 +104,13 @@ const Dashboard = () => {
               {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
             </span>
           </button> */}
-          <div className={`trigger ${Styles.switch}`}>
-            {React.createElement(
-              collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
-              {
-                className: "trigger",
-                onClick: () => setCollapsed(!collapsed),
-              }
-            )}
-          </div>
+          {React.createElement(
+            collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
+            {
+              className: "trigger",
+              onClick: () => setCollapsed(!collapsed),
+            }
+          )}
         </div>
         <Menu
           className="fon16 fontw6 m-0 py-2"

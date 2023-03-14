@@ -2,7 +2,8 @@
   display: flex;
   flex-direction: row;
   background: #f9f9f9;
-  min-height: 100vh;
+  max-height: 100vh;
+  overflow-y: auto;
 }
 .manuem {
   display: flex;
@@ -69,7 +70,7 @@
   .snam {
     display: none !important;
   }
-  /* .manuem {
+  .manuem {
     position: absolute;
   }
   .mobtn {
@@ -77,5 +78,5 @@
   }
   .switch {
     display: none;
-  } */
+  }
 }
