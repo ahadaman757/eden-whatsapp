@@ -1,17 +1,38 @@
 import Styles from "./auth.module.css";
 import { Row, Col, Form, Input, Checkbox, Button } from "antd";
+import { message, Space } from "antd";
 import {
   MailOutlined,
   LockOutlined,
   EyeTwoTone,
   EyeInvisibleOutlined,
 } from "@ant-design/icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 const Login = () => {
   const navigate = useNavigate();
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [messageApi, contextHolder] = message.useMessage();
+
+  const warning = () => {
+    messageApi.open({
+      type: "warning",
+      content: "Invalid email or password",
+    });
+  };
+  const success = () => {
+    messageApi.open({
+      type: "success",
+      content: "login succesfully ",
+    });
+  };
+  const errormes = () => {
+    messageApi.open({
+      type: "error",
+      content: "This is an error message",
+    });
+  };
   const onFinish = (values) => {
     console.log("Success:", values);
 
@@ -24,16 +45,25 @@ const Login = () => {
         console.log(response.data);
         localStorage.setItem("accessToken", response.data.token);
         navigate("/dashboard");
+        success();
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error.response.status);
+
+        if (error.response.status === 401) {
+          warning();
+        } else {
+          errormes();
+        }
       });
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+
   return (
     <div>
+      {contextHolder}
       <Row>
         <Col lg={12} md={12} className={` container pt-4 ${Styles.graydin}`}>
           <div className="px-3  fon25 fontw7">LOGOHERE</div>

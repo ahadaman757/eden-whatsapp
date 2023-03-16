@@ -1,4 +1,4 @@
-import Styles from "./dashboard.module.css";
+import Styles from "./admindashbord.module.css";
 import { useState, useEffect } from "react";
 import React from "react";
 import { Icon } from "@iconify/react";
@@ -38,7 +38,7 @@ import axios from "axios";
 const { SubMenu } = Menu;
 
 const { Header, Content, Footer, Sider } = Layout;
-const Dashboard = () => {
+const Admindashbord = () => {
   const [accordian, setaccordian] = useState(false);
   const [accordian1, setaccordian1] = useState(false);
   const [userData, setUserdata] = useState();
@@ -117,48 +117,28 @@ const Dashboard = () => {
           mode="inline"
           defaultSelectedKeys={["1"]}
         >
-          <SubMenu
-            key="sub1"
+          <Menu.Item
+            className={`${Styles.ssd}`}
+            key="1"
             icon={
               <Icon
                 icon="ant-design:layout-outlined"
                 style={{ fontSize: "23px" }}
               />
             }
-            title="Dashboard"
           >
-            <Menu.Item key="3">
-              {" "}
-              <Link to="/dashboard">Overview</Link>{" "}
-            </Menu.Item>
-            <Menu.Item key="4">
-              {" "}
-              <Link to="recentactivity">Recent Activity</Link>
-            </Menu.Item>
-          </SubMenu>
-
+            <Link to="contacts">dashboard</Link>
+          </Menu.Item>
           <Menu.Item
-            className={` ${Styles.ssd}`}
+            className={`${Styles.ssd}`}
             key="2"
-            icon={
-              <Icon
-                icon="fluent:mail-template-20-regular"
-                style={{ fontSize: "23px" }}
-              />
-            }
+            icon={<Icon icon="uil:users-alt" style={{ fontSize: "23px" }} />}
           >
-            <Link to="/dashboard/templete">Template</Link>
+            <Link to="user">Users</Link>
           </Menu.Item>
           <Menu.Item
             className={`${Styles.ssd}`}
             key="3"
-            icon={<Icon icon="uil:users-alt" style={{ fontSize: "23px" }} />}
-          >
-            <Link to="contacts">Contacts</Link>
-          </Menu.Item>
-          <Menu.Item
-            className={`${Styles.ssd}`}
-            key="4"
             icon={
               <Icon icon="carbon:integration" style={{ fontSize: "23px" }} />
             }
@@ -167,17 +147,10 @@ const Dashboard = () => {
           </Menu.Item>
           <Menu.Item
             className={`${Styles.ssd}`}
-            key="5"
+            key="4"
             icon={<Icon icon="ep:setting" style={{ fontSize: "23px" }} />}
           >
             <Link to="setting">Setting</Link>
-          </Menu.Item>
-          <Menu.Item
-            className={`${Styles.ssd}`}
-            key="6"
-            icon={<Icon icon="ep:setting" style={{ fontSize: "23px" }} />}
-          >
-            <Link to="marketing">Marketing </Link>
           </Menu.Item>
         </Menu>
       </Sider>
@@ -254,4 +227,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Admindashbord;

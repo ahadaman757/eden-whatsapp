@@ -41,13 +41,13 @@ const MyTable = () => {
         let tag;
         switch (text) {
           case 1:
-            tag = <Tag color="blue">oder placed</Tag>;
+            tag = <Tag color="blue">Order Placed</Tag>;
             break;
           case 2:
-            tag = <Tag color="green">shipped</Tag>;
+            tag = <Tag color="green">Shipped</Tag>;
             break;
           case 3:
-            tag = <Tag color="yellow">update</Tag>;
+            tag = <Tag color="yellow">Update</Tag>;
             break;
           default:
             tag = <Tag>{text}</Tag>;

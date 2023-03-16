@@ -119,7 +119,7 @@ const Apphor = ({ isInline = false }) => {
           <a
             className={`fon16 fontw6 ${Styles.loginbtn}`}
             onClick={() => {
-              navigate("./login");
+              navigate("/login");
             }}
           >
             {" "}

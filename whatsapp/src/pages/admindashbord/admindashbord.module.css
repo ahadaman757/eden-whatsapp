@@ -1,0 +1,82 @@
+.main {
+  display: flex;
+  flex-direction: row;
+  background: #f9f9f9;
+  min-height: 100vh;
+  overflow-y: auto;
+}
+.manuem {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  align-items: center;
+  margin-right: 10px !important;
+}
+.maasin {
+  border: none;
+}
+.ssd {
+  border: none;
+  background-color: white;
+  width: 218px;
+
+  border-radius: 10px;
+}
+.ssd:hover {
+  background-color: #0275d8 !important;
+  color: white !important;
+}
+.navb {
+  width: 100%;
+}
+.nav {
+  background-color: white;
+}
+.bage {
+  background: #ff0000;
+  border-radius: 10px;
+
+  color: white;
+  padding: 10px;
+}
+.setnot {
+  padding-right: 10px;
+  border-right: 1px solid #ececee;
+}
+.settnot {
+  padding-left: 10px;
+}
+.switch {
+  border: none;
+  background: none;
+}
+.mobtn {
+  border: none;
+  background: none;
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  .bage {
+    display: none;
+  }
+}
+@media (max-width: 920px) {
+  .snum {
+    display: none !important;
+  }
+}
+@media (max-width: 768px) {
+  .snam {
+    display: none !important;
+  }
+  .manuem {
+    position: absolute;
+  }
+  .mobtn {
+    display: block;
+  }
+  .switch {
+    display: none;
+  }
+}

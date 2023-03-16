@@ -19,7 +19,7 @@ import watch from "../../assets/amazfit-gts-3-pakistan-priceoye-xzefz-500x500 1.
 import shose from "../../assets/amazfit-gts-3-pakistan-priceoye-xzefz-500x500 2.png";
 
 import Slider from "react-slick";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Reviewcard from "../../component/reviwecard/reviewcard";
 import { Col, Divider, Row, Button, Modal, Form, Input } from "antd";
 import Styles from "./home.module.css";
@@ -30,15 +30,16 @@ import axios from "axios";
 
 const Home = () => {
   const [value, setValue] = useState();
-  const getFlag = (short = "string") => {
-    const data = require(`world_countries_lists/data/flags/24x24/${short.toLowerCase()}.png`);
-    // for dumi
-    if (typeof data === "string") {
-      return data;
-    }
-    // for CRA
-    return data.default;
-  };
+  console.log(" VISITOR ");
+  axios
+    .post("http://139.144.2.43:3001/visitor_data")
+    .then((response) => {
+      // console.log(" VISITOR ", response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [open1, setOpen1] = useState(false);

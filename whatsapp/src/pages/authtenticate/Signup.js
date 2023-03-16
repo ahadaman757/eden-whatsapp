@@ -242,14 +242,21 @@ const Signup = () => {
                   htmlType="submit"
                   className={`fon18 fontw6 mt-1 ${Styles.logbtn}`}
                 >
-                  Login
+                  Register
                 </Button>
               </Form.Item>
 
               <div className="df jcc aic">
                 {" "}
                 <p className="tc fon15 m-0 c61">Already have an account?</p>
-                <a className={`fon16 m-0 fontw5 ${Styles.atag}`}>Login</a>
+                <a
+                  className={`fon16 m-0 fontw5 ${Styles.atag}`}
+                  onClick={() => {
+                    navigate("/login");
+                  }}
+                >
+                  Login
+                </a>
               </div>
             </Form>
           </div>

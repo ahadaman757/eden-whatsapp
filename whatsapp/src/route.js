@@ -24,6 +24,9 @@ import Recentactivity from "./pages/dashboardpages/Recent Activity/recentactivit
 import Setting from "./pages/dashboardpages/setting/setting";
 import Contacts from "./pages/dashboardpages/contacts/contacts";
 import Marketing from "./pages/dashboardpages/Marketing/marketing";
+import Admindashbord from "./pages/admindashbord/admindashbord";
+import AdminDashboardmain from "./pages/adminpages/dashboardmain/admindashbordmain";
+import Userpage from "./pages/adminpages/Users/userpage";
 const TRoutes = () => {
   return (
     <BrowserRouter>
@@ -46,6 +49,10 @@ const TRoutes = () => {
           <Route path="contacts" element={<Contacts />} />
           <Route path="profile" element={<Profile />} />
           <Route path="marketing" element={<Marketing />} />
+        </Route>
+        <Route path="/admindashbord" element={<Admindashbord />}>
+          <Route path="" element={<AdminDashboardmain />} />
+          <Route path="user" element={<Userpage />} />
         </Route>
       </Routes>
     </BrowserRouter>
